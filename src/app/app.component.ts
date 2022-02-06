@@ -14,7 +14,27 @@ export class AppComponent {
   constructor() {
    this.todos.push(new Todo(1 , 'ler o livro', false));
    this.todos.push(new Todo(2, 'estudar java', false));
-   this.todos.push(new Todo(3, 'ir correr', true));
-    
+   this.todos.push(new Todo(3, 'ir correr', true)); 
   }
+
+remove(todo:Todo){
+  const index = this.todos.indexOf(todo);
+  if (index !== -1){
+    this.todos.splice(index, 1);
+  }
+
+}
+
+markAsDone(){
+
+
+}
+
+
+markAsUndone(){
+
+
+}
+
+
 }
