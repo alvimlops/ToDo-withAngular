@@ -17,16 +17,28 @@ export class AppComponent {
   
   constructor(private fb:FormBuilder) {
     this.form = this.fb.group({
-      title: ['Insira sua tarefa', Validators.compose([
+      title: ['', Validators.compose([
         Validators.minLength(3),
         Validators.maxLength(60),
         Validators.required
       ])]
     });
 
-   this.todos.push(new Todo(1 , 'ler o livro', false));
-   this.todos.push(new Todo(2, 'estudar java', false));
-   this.todos.push(new Todo(3, 'ir correr', true)); 
+  }
+
+  add(){
+    // this.form.value => {title: 'Titulo'}
+    const title = this.form.controls['title'].value;
+    const id = this.todos.length + 1;
+    this.todos.push(new Todo(id, title, false));
+    this.clear();
+
+  }
+
+  clear(){
+    this.form.reset();
+
+
   }
 
 remove(todo:Todo){
